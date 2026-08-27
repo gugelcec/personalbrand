@@ -1,0 +1,369 @@
+:root{
+
+    --gold:#c9a86a;
+    --gold-light:#e3c897;
+
+    --green:#546d64;
+
+    --ivory:#f9f6ef;
+
+    --ink:#1f2430;
+
+    --text:#4b5563;
+
+    --shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+    background:var(--ivory);
+
+    color:var(--ink);
+
+    overflow-x:hidden;
+}
+
+.background-decoration{
+
+    position:fixed;
+    inset:0;
+
+    background:
+
+    radial-gradient(
+        circle at top left,
+        rgba(201,168,106,.17),
+        transparent 45%
+    ),
+
+    radial-gradient(
+        circle at bottom right,
+        rgba(84,109,100,.14),
+        transparent 45%
+    );
+
+    z-index:-1;
+}
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:80px;
+
+    padding:80px;
+}
+
+.hero-image{
+
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.ornament-ring{
+
+    width:420px;
+    height:420px;
+
+    border-radius:50%;
+
+    padding:12px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #c9a86a,
+        #f5e0ba,
+        #c9a86a
+    );
+
+    position:relative;
+
+    box-shadow:
+    0 0 0 20px rgba(201,168,106,0.15),
+    0 25px 50px rgba(0,0,0,.12);
+}
+
+.ornament-ring::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-35px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(201,168,106,.35);
+}
+
+.ornament-ring img{
+
+    width:100%;
+    height:100%;
+
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.hero-content{
+
+    flex:1;
+    max-width:650px;
+}
+
+.badge{
+
+    display:inline-block;
+
+    background:#efe6d4;
+
+    color:#8d6f3c;
+
+    border:1px solid rgba(201,168,106,.35);
+
+    padding:12px 18px;
+
+    border-radius:50px;
+
+    font-size:.9rem;
+    font-weight:600;
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:5rem;
+
+    line-height:1;
+
+    margin-bottom:10px;
+
+    color:#2c2d33;
+}
+
+.hero h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:2rem;
+
+    color:var(--green);
+
+    margin-bottom:30px;
+}
+
+.hero p{
+
+    font-size:1.1rem;
+
+    line-height:1.9;
+
+    color:var(--text);
+
+    margin-bottom:35px;
+}
+
+.cta-button{
+
+    text-decoration:none;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-light)
+    );
+
+    padding:15px 28px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.cta-button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow);
+}
+
+.section{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:80px 40px;
+}
+
+.section h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:3rem;
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+    color:#2c2d33;
+}
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+}
+
+.card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+}
+
+.icon{
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+}
+
+.card h4{
+
+    margin-bottom:15px;
+
+    color:var(--green);
+}
+
+.card p{
+
+    line-height:1.7;
+
+    color:#555;
+}
+
+.about{
+
+    text-align:center;
+}
+
+.about p{
+
+    max-width:800px;
+
+    margin:auto auto 35px auto;
+
+    line-height:1.9;
+
+    color:#555;
+}
+
+.tags{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-bottom:50px;
+}
+
+.tags span{
+
+    background:white;
+
+    padding:12px 20px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(201,168,106,.25);
+
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.quote{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:2rem;
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:var(--green);
+
+    font-style:italic;
+}
+
+@media(max-width:900px){
+
+    .hero{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:50px 25px;
+    }
+
+    .ornament-ring{
+
+        width:300px;
+        height:300px;
+    }
+
+    .hero h1{
+
+        font-size:3.5rem;
+    }
+
+    .hero h2{
+
+        font-size:1.6rem;
+    }
+
+}
