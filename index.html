@@ -1,189 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal brand website of Cecilia Gugel, Product Owner, innovator and technology enthusiast.">
+  <title>Cecilia Gugel | Product Owner & Innovator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #121027;
+      --muted: #67657a;
+      --paper: #fffaf5;
+      --white: #ffffff;
+      --violet: #7137e8;
+      --pink: #ec4899;
+      --orange: #fb923c;
+      --cyan: #22d3ee;
+      --green: #34d399;
+      --yellow: #facc15;
+      --radius: 28px;
+      --shadow: 0 24px 70px rgba(41, 28, 83, 0.13);
+    }
 
-<title>Cecilia Gugel | Innovation • AI • Product Leadership</title>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: "Manrope", sans-serif; }
+    .container { width: min(1140px, calc(100% - 40px)); margin-inline: auto; }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700;800&display=swap
+    .nav-wrap { position: fixed; inset: 18px 0 auto; z-index: 100; }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 15px 12px 20px;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 20px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 12px 40px rgba(24, 18, 49, .09);
+      backdrop-filter: blur(18px);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .brand-mark {
+      display: grid; place-items: center; width: 38px; height: 38px;
+      border-radius: 12px; background: var(--ink); color: white; font-size: 13px;
+    }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 700; color: var(--muted); }
+    .nav-links a:hover { color: var(--pink); }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      border: 0; border-radius: 16px; padding: 14px 21px;
+      background: var(--ink); color: white; font-weight: 800;
+      transition: transform .2s, background .2s, box-shadow .2s;
+    }
+    .button:hover { transform: translateY(-3px); background: var(--violet); box-shadow: 0 14px 28px rgba(113,55,232,.25); }
+    .button.small { padding: 10px 16px; border-radius: 12px; font-size: 14px; }
+    .button.light { background: white; color: var(--violet); }
+    .button.ghost { border: 1px solid #dedbe8; background: rgba(255,255,255,.72); color: var(--ink); }
+    .button.ghost:hover { color: var(--pink); background: white; }
 
-<style>
+    .hero {
+      position: relative; min-height: 100vh; display: flex; align-items: center;
+      padding: 140px 0 80px; isolation: isolate;
+    }
+    .blob { position: absolute; border-radius: 50%; filter: blur(58px); opacity: .55; z-index: -1; }
+    .blob.one { width: 320px; height: 320px; left: -120px; top: 100px; background: #f0a7e3; }
+    .blob.two { width: 390px; height: 390px; right: -130px; top: 40px; background: #8be8ef; }
+    .blob.three { width: 300px; height: 300px; left: 42%; bottom: -40px; background: #ffd78d; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 65px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 22px;
+      border: 1px solid #f4bce0; border-radius: 999px; padding: 9px 14px;
+      background: rgba(255,255,255,.72); color: #b42379; font-size: 14px; font-weight: 800;
+    }
+    h1 { margin-bottom: 25px; font-size: clamp(52px, 7.2vw, 92px); line-height: .97; letter-spacing: -.068em; }
+    .gradient-text { display: block; color: transparent; background: linear-gradient(90deg,var(--violet),var(--pink),var(--orange)); background-clip: text; -webkit-background-clip: text; }
+    .lead { max-width: 680px; color: var(--muted); font-size: clamp(18px,2vw,21px); line-height: 1.65; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 33px; }
 
-:root{
-    --primary:#7c3aed;
-    --secondary:#06b6d4;
-    --accent:#f97316;
-    --pink:#ec4899;
-    --light:#f8fafc;
-    --dark:#0f172a;
-}
+    .identity-wrap { position: relative; width: min(100%, 450px); aspect-ratio: 1; margin-inline: auto; }
+    .identity {
+      position: absolute; inset: 20px; display: flex; flex-direction: column; justify-content: space-between;
+      overflow: hidden; padding: 34px; border: 6px solid transparent; border-radius: 48px;
+      background: linear-gradient(var(--ink),var(--ink)) padding-box, linear-gradient(145deg,var(--violet),var(--pink),var(--orange)) border-box;
+      color: white; box-shadow: 0 35px 90px rgba(164,37,149,.25); transform: rotate(2deg);
+      animation: float 7s ease-in-out infinite;
+    }
+    .identity::before, .identity::after { content:""; position:absolute; width:230px; height:230px; border-radius:50%; filter:blur(35px); opacity:.28; }
+    .identity::before { background:var(--cyan); right:-100px; top:-90px; }
+    .identity::after { background:var(--pink); left:-110px; bottom:-100px; }
+    .identity > * { position: relative; z-index: 1; }
+    .micro { width: fit-content; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 7px 11px; color: #8debf4; font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .initials { font: 800 clamp(88px,12vw,130px)/.8 "Manrope",sans-serif; letter-spacing: -.1em; }
+    .initials b { color: var(--pink); }
+    .identity p { max-width: 300px; margin: 18px 0 0; color: #d7d5e0; font-size: 18px; line-height: 1.5; }
+    .location { color:#d7d5e0; font-size:14px; font-weight:700; }
+    .floating-icon { position:absolute; display:grid; place-items:center; width:58px; height:58px; border-radius:18px; box-shadow:0 15px 35px rgba(30,20,60,.18); font-size:27px; }
+    .floating-icon.idea { left:0; top:60px; background:white; transform:rotate(-8deg); }
+    .floating-icon.compass { right:0; bottom:60px; background:#ffd447; transform:rotate(9deg); }
+    @keyframes float { 0%,100%{transform:translateY(0) rotate(2deg)} 50%{transform:translateY(-12px) rotate(-1deg)} }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    section { padding: 105px 0; }
+    .section-label { margin-bottom: 15px; color: var(--pink); font-size: 13px; font-weight: 800; letter-spacing:.24em; text-transform:uppercase; }
+    .section-title { margin-bottom: 0; font-size: clamp(41px,5vw,64px); line-height:1.02; letter-spacing:-.055em; }
+    .about-grid { display:grid; grid-template-columns:.78fr 1.22fr; gap:65px; align-items:start; }
+    .about-card { border:1px solid white; border-radius:38px; padding:40px; background:rgba(255,255,255,.78); box-shadow:var(--shadow); }
+    .work-icon { display:grid; place-items:center; width:58px; height:58px; margin-bottom:25px; border-radius:18px; background:linear-gradient(145deg,var(--violet),var(--pink)); color:white; font-size:27px; }
+    .about-card h3 { margin-bottom:14px; font-size:27px; letter-spacing:-.03em; }
+    .about-card p { color:var(--muted); font-size:18px; line-height:1.75; }
+    .tags { display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+    .tag { border:1px solid #e6e3ec; border-radius:999px; padding:9px 14px; background:#faf9fc; color:#514f5b; font-size:14px; font-weight:700; }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:linear-gradient(135deg,#0f172a,#1e293b);
-    color:white;
-    overflow-x:hidden;
-}
+    .passions { position:relative; overflow:hidden; background:var(--ink); color:white; }
+    .passions::before { content:""; position:absolute; inset:0; opacity:.45; background:radial-gradient(circle at 15% 15%,#6632cd 0,transparent 28%),radial-gradient(circle at 82% 76%,#087f91 0,transparent 25%); }
+    .passions .container { position:relative; }
+    .passions .section-label { color:#79e9f2; }
+    .passions .section-title { max-width:790px; margin-bottom:52px; }
+    .passion-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .passion-card { border:1px solid rgba(255,255,255,.12); border-radius:32px; padding:34px; background:rgba(255,255,255,.065); backdrop-filter:blur(8px); transition:transform .25s,background .25s; }
+    .passion-card:hover { transform:translateY(-7px); background:rgba(255,255,255,.11); }
+    .passion-icon { display:grid; place-items:center; width:58px; height:58px; margin-bottom:27px; border-radius:18px; font-size:29px; }
+    .tech .passion-icon { background:#eee6ff; } .comics .passion-icon { background:#ffe5f2; }
+    .travel .passion-icon { background:#daf7ff; } .taichi .passion-icon { background:#ddfaeb; }
+    .passion-card h3 { margin-bottom:10px; font-size:25px; }
+    .passion-card p { margin:0; color:#c9c6d4; line-height:1.7; }
+    .line { width:65px; height:4px; margin-top:26px; border-radius:10px; transition:width .25s; }
+    .passion-card:hover .line { width:110px; }
+    .tech .line { background:linear-gradient(90deg,var(--violet),var(--pink)); }
+    .comics .line { background:linear-gradient(90deg,var(--pink),#fb7185); }
+    .travel .line { background:linear-gradient(90deg,#0ea5e9,var(--cyan)); }
+    .taichi .line { background:linear-gradient(90deg,#10b981,#a3e635); }
 
-/* Animated Background */
+    .philosophy { padding:95px 0; }
+    .quote-shell { padding:4px; border-radius:45px; background:linear-gradient(90deg,#f9cf48,var(--orange),var(--pink)); }
+    .quote { border-radius:41px; padding:50px; background:rgba(255,250,245,.94); }
+    blockquote { max-width:930px; margin:12px 0 0; font:800 clamp(31px,4.5vw,52px)/1.16 "Manrope",sans-serif; letter-spacing:-.045em; }
 
-body::before,
-body::after{
-    content:"";
-    position:fixed;
-    border-radius:50%;
-    filter:blur(100px);
-    z-index:-1;
-}
+    .contact { padding:20px 0 45px; }
+    .contact-box { border-radius:48px; padding:73px 40px; background:var(--violet); color:white; text-align:center; box-shadow:0 30px 70px rgba(113,55,232,.25); }
+    .contact-box .section-label { color:#d4c2ff; }
+    .contact-box .section-title { max-width:750px; margin-inline:auto; }
+    .contact-box p { max-width:670px; margin:20px auto 0; color:#e2d9fa; font-size:18px; line-height:1.7; }
+    .socials { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:32px; }
+    .contact-box .button.ghost { border-color:rgba(255,255,255,.25); background:rgba(255,255,255,.1); color:white; }
+    .contact-box .button.ghost:hover { background:rgba(255,255,255,.2); }
 
-body::before{
-    width:400px;
-    height:400px;
-    background:#7c3aed;
-    top:-100px;
-    left:-100px;
-    opacity:.45;
-}
+    footer { display:flex; justify-content:space-between; gap:20px; padding:25px 0 35px; color:#777384; font-size:14px; }
+    .reveal { opacity:0; transform:translateY(25px); transition:opacity .7s ease,transform .7s ease; }
+    .reveal.visible { opacity:1; transform:none; }
 
-body::after{
-    width:500px;
-    height:500px;
-    background:#06b6d4;
-    bottom:-200px;
-    right:-150px;
-    opacity:.35;
-}
+    @media (max-width: 840px) {
+      .nav-links { display:none; }
+      .hero-grid, .about-grid { grid-template-columns:1fr; }
+      .hero-grid { gap:40px; }
+      .identity-wrap { width:min(100%,400px); }
+      .passion-grid { grid-template-columns:1fr; }
+      .about-grid { gap:30px; }
+    }
+    @media (max-width: 540px) {
+      .container { width:min(100% - 28px,1140px); }
+      .brand > span:last-child { display:none; }
+      .hero { padding-top:120px; }
+      h1 { font-size:52px; }
+      .identity { inset:12px; padding:27px; border-radius:38px; }
+      .floating-icon { width:50px; height:50px; }
+      section { padding:80px 0; }
+      .about-card,.passion-card { padding:27px; }
+      .quote { padding:35px 27px; }
+      .contact-box { border-radius:36px; padding:58px 24px; }
+      footer { flex-direction:column; align-items:center; text-align:center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { animation:none !important; transition:none !important; }
+      .reveal { opacity:1; transform:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home"><span class="brand-mark">CG</span><span>Cecilia Gugel</span></a>
+      <div class="nav-links"><a href="#about">About</a><a href="#passions">Passions</a><a href="#connect">Connect</a></div>
+      <a class="button small" href="#connect">Say hello ↗</a>
+    </nav>
+  </div>
 
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-}
+  <main>
+    <section class="hero" id="home">
+      <span class="blob one"></span><span class="blob two"></span><span class="blob three"></span>
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">✦ Product Owner · Innovator · Curious Mind</div>
+          <h1>Technology with <span class="gradient-text">imagination.</span></h1>
+          <p class="lead">Hi, I’m <strong>Cecilia Gugel</strong>. I shape digital products, connect people and ideas, and explore how AI can create meaningful change.</p>
+          <div class="actions">
+            <a class="button" href="#about">Discover my world ↓</a>
+            <a class="button ghost" href="#connect">Let’s connect ♡</a>
+          </div>
+        </div>
+        <div class="identity-wrap" aria-label="Cecilia Gugel personal brand card">
+          <div class="identity">
+            <span class="micro">Personal brand</span>
+            <div><div class="initials">CG<b>.</b></div><p>Building useful things. Sharing bright ideas. Staying curious.</p></div>
+            <span class="location">◎ Italy · Connected to the world</span>
+          </div>
+          <span class="floating-icon idea" aria-hidden="true">💡</span>
+          <span class="floating-icon compass" aria-hidden="true">✦</span>
+        </div>
+      </div>
+    </section>
 
-/* Navigation */
+    <section id="about">
+      <div class="container about-grid reveal">
+        <div><div class="section-label">What I do</div><h2 class="section-title">Ideas into impact.</h2></div>
+        <article class="about-card">
+          <div class="work-icon">▣</div>
+          <h3>Product Owner focused on digital and AI</h3>
+          <p>I work at the intersection of business, technology and people. My role is to translate needs into a clear product direction, bring different perspectives together, and help teams deliver experiences that create real value.</p>
+          <div class="tags"><span class="tag">Digital product ownership</span><span class="tag">AI adoption &amp; experimentation</span><span class="tag">Mobile and web experiences</span><span class="tag">Cross-functional collaboration</span><span class="tag">Innovation communities</span></div>
+        </article>
+      </div>
+    </section>
 
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:25px 0;
-}
+    <section class="passions" id="passions">
+      <div class="container">
+        <div class="section-label">Beyond the job title</div>
+        <h2 class="section-title">The things that keep me inspired.</h2>
+        <div class="passion-grid">
+          <article class="passion-card tech reveal"><div class="passion-icon">💡</div><h3>Innovation &amp; Tech</h3><p>Exploring AI, digital products and new ideas that turn complex challenges into useful, human-centered experiences.</p><div class="line"></div></article>
+          <article class="passion-card comics reveal"><div class="passion-icon">💬</div><h3>Comics</h3><p>Love visual creativity.Learning to manual draw but also to use AI to create great art</p><div class="line"></div></article>
+          <article class="passion-card travel reveal"><div class="passion-icon">✈️</div><h3>Travel</h3><p>Curious about places, people and perspectives. Every journey is a chance to learn and see differently.</p><div class="line"></div></article>
+          <article class="passion-card taichi reveal"><div class="passion-icon">☯</div><h3>Tai Chi</h3><p>Finding focus through balance, mindful movement and the quiet strength of continuous practice. Started to learn chinese</p><div class="line"></div></article>
+        </div>
+      </div>
+    </section>
 
-.logo{
-    font-size:1.4rem;
-    font-weight:700;
-    letter-spacing:1px;
-}
+    <section class="philosophy">
+      <div class="container quote-shell reveal"><div class="quote"><div class="section-label">My philosophy</div><blockquote>“Stay curious, move with purpose, and leave every idea better than you found it.”</blockquote></div></div>
+    </section>
 
-nav ul{
-    display:flex;
-    gap:25px;
-    list-style:none;
-}
+    <section class="contact" id="connect">
+      <div class="container contact-box reveal">
+        <div class="section-label">Let’s connect</div>
+        <h2 class="section-title">Have an idea worth exploring?</h2>
+        <p>I enjoy conversations about digital products, AI, innovation, creativity and the future we can build together.</p>
+        <div class="socials">
+          <!-- Replace the placeholder email and profile links below with your own. -->
+          <a class="button ghost" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">in LinkedIn</a>
+          <a class="button ghost" href="https://github.com/" target="_blank" rel="noopener noreferrer">◉ GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-nav a{
-    color:white;
-    text-decoration:none;
-}
+  <footer class="container"><span>© <span id="year"></span> Cecilia Gugel. Made with curiosity and color.</span><a href="#home">Back to top ↗</a></footer>
 
-/* Hero */
-
-.hero{
-    min-height:85vh;
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    align-items:center;
-    gap:60px;
-}
-
-.hero-text h1{
-    font-size:4.5rem;
-    line-height:1;
-    margin-bottom:15px;
-}
-
-.gradient-text{
-    background:linear-gradient(90deg,#06b6d4,#ec4899,#f97316);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.hero-text p{
-    font-size:1.2rem;
-    color:#cbd5e1;
-    line-height:1.8;
-    margin-bottom:30px;
-}
-
-.btn{
-    display:inline-block;
-    padding:14px 28px;
-    border-radius:50px;
-    background:linear-gradient(90deg,#06b6d4,#7c3aed);
-    text-decoration:none;
-    color:white;
-    font-weight:600;
-}
-
-/* Profile Card */
-
-.profile-card{
-    backdrop-filter:blur(20px);
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:30px;
-    padding:35px;
-    text-align:center;
-}
-
-.avatar{
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#06b6d4,#ec4899);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:5rem;
-    margin:auto auto 20px;
-}
-
-.profile-card h3{
-    font-size:1.8rem;
-    margin-bottom:10px;
-}
-
-.profile-card p{
-    color:#cbd5e1;
-}
-
-/* Sections */
-
-section{
-    padding:100px 0;
-}
-
-.section-title{
-    text-align:center;
-    font-size:3rem;
-    margin-bottom:60px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-}
-
-.card{
-    backdrop-filter:blur(20px);
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.1);
-  
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.14 });
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+  </script>
+</body>
+</html>
